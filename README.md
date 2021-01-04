@@ -76,9 +76,13 @@ Use the checked in [Dockerfile](https://github.com/nhe23/AirPoll/blob/main/Front
 The backend consists of three parts: the database, a GraphQL API and a DB-Sync service.
 
 ### Database
-The app uses mongodb as database. To run locally either [install](https://docs.mongodb.com/manual/installation/) it or use the official [docker container](https://hub.docker.com/_/mongo).
+The app uses mongodb as database. The AirPoll App uses three collections: measurements (contains latest measurement data), countries (contains alls the countries for which data is available) & cities (contains alls the countries for which data is available). However you do not need to create these collection as the DB-Sync service does that automatically when it is launched for the first time.
+
+To run the needed database locally either [install](https://docs.mongodb.com/manual/installation/) it or use the official [docker container](https://hub.docker.com/_/mongo).
 
 ### DB-Sync
+:warning: When the DB-Sync service is launched the first time the database is empty. As the openaqapi is sometimes very slow and unreliable it may take some time for the database to be populated.
+
 The DB-Sync service is written in go. The service periodically polls data from the openaq API and updates the database.
 To run locally `GO` has to be [installed](https://golang.org/doc/install). The database is configured via the environment variable `mongodb`. If not set the 
 service assumes you have it running locally ("mongodb://localhost:27017")
@@ -92,7 +96,7 @@ go run main.go
 
 **Start service using Docker**
 
-Use the checked in [Dockerfile](https://github.com/nhe23/AirPoll/blob/main/Backend/dbsync/Dockerfile) to build the image, and then run it. 
+Alternativeley you can run the DB-Sync service via Docker. Use the checked in [Dockerfile](https://github.com/nhe23/AirPoll/blob/main/Backend/dbsync/Dockerfile) to build the image, and then run it. 
 
 **Run tests**
 
@@ -126,5 +130,5 @@ make test
 
 **Start GraphQL-API using Docker**
 
-Alternatively use the checked in [Dockerfile](https://github.com/nhe23/AirPoll/blob/main/Backend/api/Dockerfile) to build the image, and then run it. Make sure to forward port 8080 to the container.
+Alternatively you can use Docker to run the API. Use the checked in [Dockerfile](https://github.com/nhe23/AirPoll/blob/main/Backend/api/Dockerfile) to build the image, and then run it. Make sure to forward port 8080 to the container.
 
