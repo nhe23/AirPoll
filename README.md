@@ -19,6 +19,16 @@ The following image illustrates the architecture used to solve the challenge.
 ## Frontend
 ### Airpoll SPA
 The Airpoll Frontend is designed as a SPA. The App was built in Svelte with Typescript integration. [Jest](https://jestjs.io/) and the svelte [testing-libraray](https://testing-library.com/docs/svelte-testing-library/intro/) are used for testing. 
+The SPA currently has to pages:
+
+Home (Serves as landing page):
+
+![alt text](https://github.com/nhe23/AirPoll/blob/main/Frontend/doc/Home.png "AirPoll Home")
+
+Dashbaord (display air quality data according to requirements given):
+
+![alt text](https://github.com/nhe23/AirPoll/blob/main/Frontend/doc/Dashboard.png "AirPoll Dashboard")
+
 
 **Develop locally**
 
@@ -58,7 +68,7 @@ You can run the newly built app with `npm run start`. This uses [sirv](https://g
 
 **Start app using Docker**
 
-Use the checked in `Dockerfile`to build the image, and then run it. Make sure to forward port 5000 to the container.
+Use the checked in [Dockerfile](https://github.com/nhe23/AirPoll/blob/main/Frontend/Dockerfile) to build the image, and then run it. Make sure to forward port 5000 to the container.
 
 ---
 
@@ -81,7 +91,7 @@ go run main.go
 
 **Start service using Docker**
 
-Use the checked in [Dockerfile]() to build the image, and then run it. 
+Use the checked in [Dockerfile](https://github.com/nhe23/AirPoll/blob/main/Backend/dbsync/Dockerfile) to build the image, and then run it. 
 
 **Run tests**
 
@@ -114,5 +124,5 @@ make test
 
 **Start GraphQL-API using Docker**
 
-Alternatively use the checked in [Dockerfile]() to build the image, and then run it. Make sure to forward port 8080 to the container.
+Alternatively use the checked in [Dockerfile](https://github.com/nhe23/AirPoll/blob/main/Backend/api/Dockerfile) to build the image, and then run it. Make sure to forward port 8080 to the container.
 
