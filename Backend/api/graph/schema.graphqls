@@ -1,0 +1,62 @@
+# GraphQL schema example
+#
+# https://gqlgen.com/getting-started/
+
+scalar Time
+
+# type LocationResult {
+#   _id: String!
+#   location: String!
+#   city: String!
+#   country: String!
+#   measurements: [Measurement!]!
+#   coordinates: Coordinates!
+# }
+
+type LocationResult {
+  _id: String!
+  location: String!
+  city: String!
+  country: Country!
+  measurements: [Measurement!]!
+  coordinates: Coordinates!
+}
+
+type Measurement {
+  parameter: String!
+  value: Int!
+  lastUpdated: Time!
+  unit: String!
+  qualityIndex: Int!
+}
+
+type Coordinates {
+  latitude: Float!
+  longitude: Float!
+}
+
+type City {
+  _id: String!
+  name: String!
+  country: String!
+  count: Int!
+  locations: Int!
+}
+
+type Country {
+  _id: String!
+  code: String!
+  name: String!
+  count: Int!
+  cities: Int!
+  locations: Int!
+}
+
+type Query {
+  measurements(take:Int, after:String): [LocationResult!]!
+  measurementsByCountry(country: String!, take:Int, after:String): [LocationResult!]!
+  measurementsByCity(city: String!, take:Int, after:String): [LocationResult!]!
+  countries: [Country!]!
+  cities(take:Int, after:String): [City!]!
+  citiesStartsWith(searchString:String!): [City!]!
+}
