@@ -25,7 +25,7 @@ Home (Serves as landing page):
 
 ![alt text](https://github.com/nhe23/AirPoll/blob/main/Frontend/doc/Home.png "AirPoll Home")
 
-Dashbaord (display air quality data according to requirements given):
+Dashboard (display air quality data according to requirements given):
 
 ![alt text](https://github.com/nhe23/AirPoll/blob/main/Frontend/doc/Dashboard.png "AirPoll Dashboard")
 
@@ -73,14 +73,14 @@ Use the checked in [Dockerfile](https://github.com/nhe23/AirPoll/blob/main/Front
 ---
 
 ## Backend
-The backend consists of three parts: the database, a GraphQL API and a db-sync service.
+The backend consists of three parts: the database, a GraphQL API and a DB-Sync service.
 
 ### Database
 The app uses mongodb as database. To run locally either [install](https://docs.mongodb.com/manual/installation/) it or use the official [docker container](https://hub.docker.com/_/mongo).
 
 ### DB-Sync
 The DB-Sync service is written in go. The service periodically polls data from the openaq API and updates the database.
-To run locally `GO` has to be [installed](https://golang.org/doc/install). The database is configured via the environment variable "mongodb". If not set the 
+To run locally `GO` has to be [installed](https://golang.org/doc/install). The database is configured via the environment variable `mongodb`. If not set the 
 service assumes you have it running locally ("mongodb://localhost:27017")
 
 To run locally navigate into the directory and run the programm
@@ -105,7 +105,7 @@ make test
 ### GraphQL-API
 The GraphQL-API was also written in go. It uses [gqlgen](https://github.com/99designs/gqlgen) for the GraphQL integration. Gqlgen is used to automatically generate 
 models and queryresolvers for the given schema. Also [dataloaden](https://github.com/vektah/dataloaden) is used for dataloaders.
-To run locally `GO` has to be [installed](https://golang.org/doc/install). The database is configured via the environment variable "mongodb". If not set the 
+To run locally `GO` has to be [installed](https://golang.org/doc/install). The database is configured via the environment variable `mongodb`. If not set the 
 service assumes you have it running locally ("mongodb://localhost:27017")
 
 To run locally navigate into the directory and run the programm
