@@ -12,11 +12,12 @@ Table of contents:
 
 ## Architecture
 The following image illustrates the architecture used to solve the challenge.
+
 ![alt text](https://github.com/nhe23/AirPoll/blob/main/AirPoll-Architecture.png "AirPoll Architecture")
 
 ## Application Components
-### Frontend
-#### Airpoll SPA
+## Frontend
+### Airpoll SPA
 The Airpoll Frontend is designed as a SPA. The App was built in Svelte with Typescript integration. [Jest](https://jestjs.io/) and the svelte [testing-libraray](https://testing-library.com/docs/svelte-testing-library/intro/) are used for testing. 
 
 **Develop locally**
@@ -58,13 +59,15 @@ You can run the newly built app with `npm run start`. This uses [sirv](https://g
 
 Use the checked in `Dockerfile`to build the image, and then run it. Make sure to forward port 5000 to the container.
 
-### Backend
+---
+
+## Backend
 The backend consists of three parts: the database, a GraphQL API and a db-sync service.
 
-#### Database
+### Database
 The app uses mongodb as database. To run locally either [install](https://docs.mongodb.com/manual/installation/) it or use the official [docker container](https://hub.docker.com/_/mongo).
 
-#### Db-Sync
+### Db-Sync
 The DB-Sync service is written in go. The service periodically polls data from the openaq API and updates the database.
 To run locally `GO` has to be [installed](https://golang.org/doc/install). The database is configured via the environment variable "mongodb". If not set the 
 service assumes you have it running locally ("mongodb://localhost:27017")
@@ -87,13 +90,18 @@ cd backend/dbsync
 make test
 ```
 
-#### GraphQL-API
+### GraphQL-API
 The GraphQL-API was also written in go. It uses [gqlgen](https://github.com/99designs/gqlgen) for the GraphQL integration. Gqlgen is used to automatically generate 
-models and queryresolvers for the given schema. It also uses [dataloaden](https://github.com/vektah/dataloaden) for dataloaders.
+models and queryresolvers for the given schema. Also [dataloaden](https://github.com/vektah/dataloaden) is used for dataloaders.
+To run locally `GO` has to be [installed](https://golang.org/doc/install). The database is configured via the environment variable "mongodb". If not set the 
+service assumes you have it running locally ("mongodb://localhost:27017")
 
-**Start GraphQL-API using Docker**
-
-Use the checked in [Dockerfile]() to build the image, and then run it. 
+...then navigate into the directory and run the programm
+```bash
+cd backend/api
+go run cmd/server/main.go
+```
+You can use the GraphQL dashboard by opening http://localhost:8080/ in your browser. There you can run queries and inspect the schema.
 
 **Run tests**
 
@@ -102,3 +110,8 @@ You can run the unittests like this:
 cd backend/dbsync
 make test
 ```
+
+**Start GraphQL-API using Docker**
+
+Alternatively use the checked in [Dockerfile]() to build the image, and then run it. Make sure to forward port 8080 to the container.
+
