@@ -44,7 +44,7 @@ type collection struct {
 
 var logger log.Logger
 
-const defaultDb = "mongodb://localhost:27018"
+const defaultDb = "mongodb://localhost:27017"
 
 func initCollections(mongoURI string, dbName string) (collections, error) {
 	var cols collections

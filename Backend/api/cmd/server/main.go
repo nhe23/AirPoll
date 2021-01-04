@@ -28,7 +28,7 @@ import (
 )
 
 const defaultPort = "8080"
-const defaultDb = "mongodb://localhost:27018"
+const defaultDb = "mongodb://localhost:27017"
 
 func main() {
 	router := chi.NewRouter()

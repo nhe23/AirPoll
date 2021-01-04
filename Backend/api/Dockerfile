@@ -19,7 +19,7 @@ RUN go build ./cmd/server
 ENV HOST=0.0.0.0
 
 # host.docker.internal points to local machine. Change if db is deployed somewhere else.
-ENV mongodb=mongodb://host.docker.internal:27018
+ENV mongodb=mongodb://host.docker.internal:27017
 
 # Expose port 8080 to the outside world
 EXPOSE 8080

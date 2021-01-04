@@ -16,7 +16,7 @@ COPY . .
 RUN go build 
 
 # host.docker.internal points to local machine. Change if db is deployed somewhere else.
-ENV mongodb=mongodb://host.docker.internal:27018
+ENV mongodb=mongodb://host.docker.internal:27017
 
 # Command to run the executable
 CMD ["./aq-dbsync"]
