@@ -1,10 +1,14 @@
 # AirPoll
 This app was developed for the [Accenture coding challenge](https://github.com/AccentureChallenge/Code.Now). 
 Table of contents:
-1. [Architecture]()
-2. [Application Components]()
-   * Frontend
-   * Backend
+1. [Architecture](https://github.com/nhe23/AirPoll/blob/main/README.md#architecture)
+2. [Application Components](https://github.com/nhe23/AirPoll/blob/main/README.md#application-components)
+   * [Frontend](https://github.com/nhe23/AirPoll/blob/main/README.md#frontend)
+     * [Airpoll SPA](https://github.com/nhe23/AirPoll/blob/main/README.md#airpoll-spa)
+   * [Backend](https://github.com/nhe23/AirPoll/blob/main/README.md#backend)
+     * [Database](https://github.com/nhe23/AirPoll/blob/main/README.md#database)
+     * [Db-Sync](https://github.com/nhe23/AirPoll/blob/main/README.md#db-sync)
+     * [GraphQL-API](https://github.com/nhe23/AirPoll/blob/main/README.md#graphql-api)
 
 ## Architecture
 The following image illustrates the architecture used to solve the challenge.
@@ -15,7 +19,8 @@ The following image illustrates the architecture used to solve the challenge.
 #### Airpoll SPA
 The Airpoll Frontend is designed as a SPA. The App was built in Svelte with Typescript integration. [Jest](https://jestjs.io/) and the svelte [testing-libraray](https://testing-library.com/docs/svelte-testing-library/intro/) are used for testing. 
 
-** Develop locally **
+**Develop locally**
+
 To configure the backend url set the environment variable `GQLBACKEND`. If it is not set the app assumes you have the backend running locally at http://localhost:8080/query
 Install the dependencies...
 
@@ -50,10 +55,15 @@ npm run build
 You can run the newly built app with `npm run start`. This uses [sirv](https://github.com/lukeed/sirv), which is included in the package.json's `dependencies`.
 
 **Start app using Docker**
+
 Use the checked in `Dockerfile`to build the image, and then run it. Make sure to forward port 5000 to the container.
 
 ### Backend
 The backend consists of three parts: the database, a GraphQL API and a db-sync service.
+
+#### Database
+The app uses mongodb as database. To run locally either [install](https://docs.mongodb.com/manual/installation/) it or use the official [docker container](https://hub.docker.com/_/mongo).
+
 #### Db-Sync
 The DB-Sync service is written in go. The service periodically polls data from the openaq API and updates the database.
 To run locally `GO` has to be [installed](https://golang.org/doc/install). The database is configured via the environment variable "mongodb". If not set the 
@@ -66,9 +76,29 @@ go run main.go
 ```
 
 **Start service using Docker**
+
 Use the checked in [Dockerfile]() to build the image, and then run it. 
+
+**Run tests**
+
+You can run the unittests like this:
+```bash
+cd backend/dbsync
+make test
+```
 
 #### GraphQL-API
 The GraphQL-API was also written in go. It uses [gqlgen](https://github.com/99designs/gqlgen) for the GraphQL integration. Gqlgen is used to automatically generate 
 models and queryresolvers for the given schema. It also uses [dataloaden](https://github.com/vektah/dataloaden) for dataloaders.
-The app uses mongodb as database. To run locally either [install](https://docs.mongodb.com/manual/installation/) it or use the official [docker container](https://hub.docker.com/_/mongo).
+
+**Start GraphQL-API using Docker**
+
+Use the checked in [Dockerfile]() to build the image, and then run it. 
+
+**Run tests**
+
+You can run the unittests like this:
+```bash
+cd backend/dbsync
+make test
+```
