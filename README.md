@@ -7,7 +7,7 @@ Table of contents:
      * [Airpoll SPA](https://github.com/nhe23/AirPoll/blob/main/README.md#airpoll-spa)
    * [Backend](https://github.com/nhe23/AirPoll/blob/main/README.md#backend)
      * [Database](https://github.com/nhe23/AirPoll/blob/main/README.md#database)
-     * [Db-Sync](https://github.com/nhe23/AirPoll/blob/main/README.md#db-sync)
+     * [DB-Sync](https://github.com/nhe23/AirPoll/blob/main/README.md#db-sync)
      * [GraphQL-API](https://github.com/nhe23/AirPoll/blob/main/README.md#graphql-api)
 
 ## Architecture
@@ -17,7 +17,7 @@ The following image illustrates the architecture used to solve the challenge.
 
 ## Application Components
 ## Frontend
-### Airpoll SPA
+### Airpoll SPA (Single Page Application)
 The Airpoll Frontend is designed as a SPA. The App was built in Svelte with Typescript integration. [Jest](https://jestjs.io/) and the svelte [testing-libraray](https://testing-library.com/docs/svelte-testing-library/intro/) are used for testing. 
 The SPA currently has to pages:
 
@@ -78,7 +78,7 @@ The backend consists of three parts: the database, a GraphQL API and a db-sync s
 ### Database
 The app uses mongodb as database. To run locally either [install](https://docs.mongodb.com/manual/installation/) it or use the official [docker container](https://hub.docker.com/_/mongo).
 
-### Db-Sync
+### DB-Sync
 The DB-Sync service is written in go. The service periodically polls data from the openaq API and updates the database.
 To run locally `GO` has to be [installed](https://golang.org/doc/install). The database is configured via the environment variable "mongodb". If not set the 
 service assumes you have it running locally ("mongodb://localhost:27017")
@@ -86,6 +86,7 @@ service assumes you have it running locally ("mongodb://localhost:27017")
 To run locally navigate into the directory and run the programm
 ```bash
 cd backend/dbsync
+go mod download
 go run main.go
 ```
 
@@ -110,6 +111,7 @@ service assumes you have it running locally ("mongodb://localhost:27017")
 To run locally navigate into the directory and run the programm
 ```bash
 cd backend/api
+go mod download
 go run cmd/server/main.go
 ```
 You can use the GraphQL dashboard by opening http://localhost:8080/ in your browser. There you can run queries and inspect the schema.
