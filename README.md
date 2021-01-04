@@ -22,8 +22,9 @@ The Airpoll Frontend is designed as a SPA. The App was built in Svelte with Type
 
 **Develop locally**
 
-To configure the backend url set the environment variable `GQLBACKEND`. If it is not set the app assumes you have the backend running locally at http://localhost:8080/query
-Install the dependencies...
+To configure the backend url set the environment variable `GQLBACKEND`. If it is not set the app assumes you have the backend running locally at http://localhost:8080/query.
+
+To start locally install the dependencies...
 
 ```bash
 cd frontend
@@ -72,7 +73,7 @@ The DB-Sync service is written in go. The service periodically polls data from t
 To run locally `GO` has to be [installed](https://golang.org/doc/install). The database is configured via the environment variable "mongodb". If not set the 
 service assumes you have it running locally ("mongodb://localhost:27017")
 
-...then navigate into the directory and run the programm
+To run locally navigate into the directory and run the programm
 ```bash
 cd backend/dbsync
 go run main.go
@@ -96,7 +97,7 @@ models and queryresolvers for the given schema. Also [dataloaden](https://github
 To run locally `GO` has to be [installed](https://golang.org/doc/install). The database is configured via the environment variable "mongodb". If not set the 
 service assumes you have it running locally ("mongodb://localhost:27017")
 
-...then navigate into the directory and run the programm
+To run locally navigate into the directory and run the programm
 ```bash
 cd backend/api
 go run cmd/server/main.go
